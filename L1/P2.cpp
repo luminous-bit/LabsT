@@ -6,6 +6,7 @@ using namespace std;
 string reInit(char input[], int length) {
   string result = "";
   int count = 0;
+  int done = 0;
 
   for (int i = 0; i < length; ++i) {
     if (i > 0 && input[i] == input[i - 1]) {
@@ -16,10 +17,12 @@ string reInit(char input[], int length) {
 
     if (count == 1) {
       result += input[i];
-    } else if (count > 3) {
+    } else if (count > 3 && input[i] != input[i + 1] && done != 1) {
       result.pop_back();
       result += "###";
+      done = 1;
     }
+    done = 0;
   }
 
   return result;
