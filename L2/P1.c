@@ -28,6 +28,7 @@ char* read_string() {
     str = new_str;
     size = new_size;
     len++;
+    free(new_str);
   }
 
   return str;

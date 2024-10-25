@@ -12,7 +12,7 @@ void read_string(char** str, int* len, int increment) {
     while (1) {
       char c = getchar();
 
-      if (c != '\n' && c != EOF) {
+      if (c != '\n') {
         if (*len == capacity) {
           capacity += increment;
           *str = (char*)realloc(*str, capacity * sizeof(char));
@@ -27,7 +27,6 @@ void read_string(char** str, int* len, int increment) {
         break;
       }
     }
-
     if (done == 0) (*str)[*len] = '\0';
   }
 }
@@ -93,4 +92,6 @@ int main() {
   read_string(&str, &len, increment);
   char* fin = reInit(str, result);
   printf("Final array: %s\n", fin);
+  free(str);
+  free(fin);
 }
