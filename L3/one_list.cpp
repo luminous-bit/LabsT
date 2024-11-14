@@ -53,7 +53,7 @@ class OneList {
   };
 
   Element<T>* head;
-  
+
   OneList() : head(nullptr) {}
 
   bool empty() const { return head == nullptr; }
@@ -115,9 +115,7 @@ class OneList {
     return *temp;
   }
 
-   Element<T>* front() {
-        return head;
-    }
+  Element<T>* front() { return head; }
 
   // void insert(Iterator pos, T value) {
   // Element<T>* newElement = new Element<T>(value);
@@ -164,14 +162,14 @@ class OneList {
     }
   }
 
-  //string toString() const {
-    //string result;
-    //Element<T>* current = head;
-    //while (current) {
-      //result += current->data;
-      //current = current->next;
-    //}
-    //return result;
+  // string toString() const {
+  // string result;
+  // Element<T>* current = head;
+  // while (current) {
+  // result += current->data;
+  // current = current->next;
+  //}
+  // return result;
   //}
 
   int size() const {
@@ -182,7 +180,7 @@ class OneList {
       temp = temp->next;
     }
     return count;
-  }      
+  }
 
   void print() const {
     Element<T>* temp = head;
@@ -206,48 +204,48 @@ class OneList {
 
 template <typename T>
 void removeDuplicatesAndReplace(Element<T>* head) {
-    if (!head) return;
+  if (!head) return;
 
-    unordered_set<char> seen;
-    Element<T>* current = head;
-    Element<T>* prev = nullptr;
+  unordered_set<char> seen;
+  Element<T>* current = head;
+  Element<T>* prev = nullptr;
 
-    while (current != nullptr) {
-        if (seen.find(current->data) != seen.end()) {
-            //Element<T>* next = current->next;
-            int count = 0;
-            
-            // Проверяем, сколько раз символ повторяется
-            while (current != nullptr && current->data == prev->data) {
-                count++;
-                current = current->next;
-            }
-            
-            // Если символ повторяется менее 4 раз, удаляем его
-            if (count < 3) {
-                prev->next = current;
-            } else {
-                // Заменяем на ###
-                prev->data = '#';
-                prev->next = new Element('#');
-                prev->next->next = new Element('#');
-                prev->next->next->next = current;
-            }
-        } else {
-            seen.insert(current->data);
-            prev = current;
-            current = current->next;
-        }
+  while (current != nullptr) {
+    if (seen.find(current->data) != seen.end()) {
+      // Element<T>* next = current->next;
+      int count = 0;
+
+      // Проверяем, сколько раз символ повторяется
+      while (current != nullptr && current->data == prev->data) {
+        count++;
+        current = current->next;
+      }
+
+      // Если символ повторяется менее 4 раз, удаляем его
+      if (count < 3) {
+        prev->next = current;
+      } else {
+        // Заменяем на ###
+        prev->data = '#';
+        prev->next = new Element('#');
+        prev->next->next = new Element('#');
+        prev->next->next->next = current;
+      }
+    } else {
+      seen.insert(current->data);
+      prev = current;
+      current = current->next;
     }
+  }
 }
 
 template <typename T>
 void printList(Element<T>* head) {
-    while (head != nullptr) {
-        cout << head->data;
-        head = head->next;
-    }
-    cout << endl;
+  while (head != nullptr) {
+    cout << head->data;
+    head = head->next;
+  }
+  cout << endl;
 }
 
 int main() {
