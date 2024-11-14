@@ -214,7 +214,7 @@ void removeDuplicatesAndReplace(Element<T>* head) {
 
     while (current != nullptr) {
         if (seen.find(current->data) != seen.end()) {
-            Element<T>* next = current->next;
+            //Element<T>* next = current->next;
             int count = 0;
             
             // Проверяем, сколько раз символ повторяется
